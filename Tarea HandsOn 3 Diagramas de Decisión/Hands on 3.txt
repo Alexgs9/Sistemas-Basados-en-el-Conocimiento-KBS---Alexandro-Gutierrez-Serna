@@ -1,0 +1,55 @@
+(deftemplate Enfermedad
+    (slot Signo1)
+    (slot Signo2)
+    (slot Sintoma1)
+    (slot Sintoma2)
+)
+
+(assert (Enfermedad (Signo1 Congestion)(Signo2 Estornudos)(Sintoma1 Moqueo)(Sintoma2 DolorDeGarganta)))
+(assert (Enfermedad (Signo1 Fiebre)(Signo2 Escalofrios)(Sintoma1 DolorMuscular)(Sintoma2 Fatiga)))
+(assert (Enfermedad (Signo1 DolorDeCabeza)(Signo2 VisionBorrosa)(Sintoma1 Mareos)(Sintoma2 DificultadRespiratoria)))
+(assert (Enfermedad (Signo1 AumentoEnLaSed)(Signo2 VisionBorrosa)(Sintoma1 Fatiga)(Sintoma2 AumentoEnFrecuenciaDeOrina)))
+(assert (Enfermedad (Signo1 SibilanciaAlRespirar)(Signo2 OpresionEnPecho)(Sintoma1 Tos)(Sintoma2 DificultadRespiratoria)))
+(assert (Enfermedad (Signo1 PielSeca)(Signo2 Enrojecimiento)(Sintoma1 PicazonIntensa)(Sintoma2 InflamacionDeLaPiel)))
+
+(defrule DiagnosticoDeResfriado
+(Enfermedad (Signo1 Congestion)(Signo2 Estornudos)(Sintoma1 Moqueo)(Sintoma2 DolorDeGarganta))
+=>
+(assert(Diagnostico Resfriado))
+(printout t "Tienes Resfriado" crlf)
+)
+
+(defrule DiagnosticoDeGripe
+(Enfermedad (Signo1 Fiebre)(Signo2 Escalofrios)(Sintoma1 DolorMuscular)(Sintoma2 Fatiga))
+=>
+(assert(Diagnostico Gripe))
+(printout t "Tienes Gripe" crlf)
+)
+
+(defrule DiagnosticoDeHipertension
+(Enfermedad (Signo1 DolorDeCabeza)(Signo2 VisionBorrosa)(Sintoma1 Mareos)(Sintoma2 DificultadRespiratoria))
+=>
+(assert(Diagnostico Hipertension))
+(printout t "Tienes Hipertension" crlf)
+)
+
+(defrule DiagnosticoDeDiabetesTipoDos
+(Enfermedad (Signo1 AumentoEnLaSed)(Signo2 VisionBorrosa)(Sintoma1 Fatiga)(Sintoma2 AumentoEnFrecuenciaDeOrina))
+=>
+(assert(Diagnostico DiabetesTipoDos))
+(printout t "Tienes Diabetes Tipo Dos" crlf)
+)
+
+(defrule DiagnosticoDeAsma
+(Enfermedad (Signo1 SibilanciaAlRespirar)(Signo2 OpresionEnPecho)(Sintoma1 Tos)(Sintoma2 DificultadRespiratoria))
+=>
+(assert(Diagnostico Asma))
+(printout t "Tienes Asma" crlf)
+)
+
+(defrule DiagnosticoDeDermatitisAtopica
+(Enfermedad (Signo1 PielSeca)(Signo2 Enrojecimiento)(Sintoma1 PicazonIntensa)(Sintoma2 InflamacionDeLaPiel))
+=>
+(assert(Diagnostico DermatitisAtopica))
+(printout t "Tienes Dermatitis Atopica" crlf)
+)
